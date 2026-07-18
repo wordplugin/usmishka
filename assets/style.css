@@ -194,3 +194,19 @@ footer a{color:var(--yellow)}
 .paypal-card{background:#fff;border-radius:16px;padding:24px 22px 14px;margin-top:22px;max-width:420px}
 .paypal-card h4{color:var(--ink);font-family:'Zen Maru Gothic',sans-serif;font-size:1rem;margin-bottom:12px;text-align:center}
 .paypal-card select#item-options{width:100%;padding:11px 12px;border:2px solid var(--line);border-radius:10px;font-size:.95rem;font-family:inherit;margin-bottom:14px;background:#fff;color:var(--ink)}
+
+/* category subpages */
+.page-hero{padding:120px 0 46px;background:radial-gradient(600px 300px at 90% 0%,rgba(255,213,0,.22),transparent),radial-gradient(600px 300px at 0% 100%,rgba(0,87,183,.1),transparent),var(--bg)}
+.page-hero h1{font-family:'Zen Maru Gothic',sans-serif;font-size:clamp(1.7rem,4vw,2.5rem)}
+.page-hero .crumb{font-size:.85rem;color:var(--muted);margin-bottom:8px}
+.page-hero .crumb a{color:var(--blue)}
+.page-hero .lead{color:var(--muted);margin-top:12px;max-width:760px}
+.records{max-width:860px;margin:0 auto}
+.record{display:grid;grid-template-columns:300px 1fr;gap:24px;align-items:start;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;margin-bottom:18px;box-shadow:0 4px 12px rgba(28,39,51,.05)}
+.record img{border-radius:10px;width:100%;object-fit:cover;aspect-ratio:4/3}
+.record time{color:var(--blue);font-weight:900;font-family:'Zen Maru Gothic',sans-serif;display:block}
+.record h3{font-size:1.05rem;margin:2px 0 6px}
+.record p{font-size:.92rem;color:var(--muted)}
+.record.noimg{grid-template-columns:1fr}
+@media(max-width:640px){.record{grid-template-columns:1fr}}
+.back-cta{text-align:center;margin:44px 0 10px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
