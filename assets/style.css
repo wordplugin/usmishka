@@ -80,6 +80,12 @@ nav a.donate:hover{background:#ffdf40}
 .taglist span{background:var(--yellow-soft);border:1px solid #f2e29a;border-radius:999px;padding:4px 14px;font-size:.8rem;font-weight:700}
 @media(max-width:800px){.sumo-grid{grid-template-columns:1fr}}
 
+/* evacuation */
+#evacuation .wrap>p{max-width:760px;margin:0 auto 16px;color:var(--muted);font-size:.98rem}
+.evac-quote{max-width:760px;margin:26px auto;padding:22px 28px;background:var(--card);border-left:5px solid var(--blue);border-radius:10px;box-shadow:0 8px 24px rgba(28,39,51,.08)}
+.evac-quote p{font-family:'Zen Maru Gothic',sans-serif;font-size:1.15rem;color:var(--ink);margin-bottom:10px}
+.evac-quote cite{display:block;font-style:normal;font-size:.85rem;color:var(--muted);text-align:right}
+
 /* timeline */
 .timeline{position:relative;max-width:760px;margin:0 auto;padding-left:34px}
 .timeline::before{content:"";position:absolute;left:10px;top:6px;bottom:6px;width:4px;border-radius:2px;background:linear-gradient(180deg,var(--blue),var(--yellow))}
