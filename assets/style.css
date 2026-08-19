@@ -17,7 +17,9 @@ section{padding:72px 0}
 header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,252,248,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1200px;margin:0 auto;padding:0 20px}
 .brand{display:flex;align-items:center;gap:10px;font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:1.15rem;color:var(--ink)}
+.brand img{height:28px;width:auto;flex:none}
 .brand small{display:block;font-size:.6rem;font-weight:500;color:var(--muted);letter-spacing:.05em}
+@media(max-width:560px){.brand img{height:23px}.brand small{display:none}}
 nav ul{display:flex;gap:4px;list-style:none;align-items:center}
 nav a{padding:8px 12px;border-radius:8px;font-size:.9rem;font-weight:500;color:var(--ink)}
 nav a:hover{background:var(--yellow-soft)}
