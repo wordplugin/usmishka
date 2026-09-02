@@ -205,18 +205,18 @@
     <div class="don-grid">
       <div>
         <p>У сьогоднішній Україні припаси є «там, де вони є» — насправді допомозі потрібні інформація та операційні кошти. За ваші пожертви ми купуємо припаси на місці, і Хідето Чуджо особисто передає їх дітям в Україні.</p>
-        <p>Щоб показати, що кожна єна доходить до дітей, ми публікуємо повний звіт про використання пожертв. Пожертви — від 3 000 єн.</p>
+        <p>Щоб показати, що кожна пожертва доходить до дітей, ми публікуємо повний звіт про їх використання. Пожертви — від 20 USD. Оплата здійснюється в доларах США та конвертується в єни при зарахуванні, тому суми у наших фінансових звітах наведені в єнах.</p>
         <div class="paypal-card">
           <h4>Караван «Усмішка» Піки Чуджо (№5)</h4>
           <div id="smart-button-container">
             <div style="text-align:center">
               <div id="item-options-wrapper">
                 <select id="item-options">
-                  <option value="Pika中條のウスミシュカ・キャラバン(第5弾)寄付金　５千円" price="5000">Пожертва ¥5 000</option>
-                  <option value="Pika中條のウスミシュカ・キャラバン(第5弾)　寄付金　3千円" price="3000">Пожертва ¥3 000</option>
-                  <option value="Pika中條のウスミシュカ・キャラバン(第5弾)寄付金　１万円" price="10000">Пожертва ¥10 000</option>
-                  <option value="Pika中條のウスミシュカ・キャラバン(第5弾)寄付金　3万円" price="30000">Пожертва ¥30 000</option>
-                  <option value="Pika中條のウスミシュカ・キャラバン(第5弾)寄付金　５万円" price="50000">Пожертва ¥50 000</option>
+                  <option value="Usmishka Caravan #5 donation USD 35" price="35">Пожертва 35 USD</option>
+                  <option value="Usmishka Caravan #5 donation USD 20" price="20">Пожертва 20 USD</option>
+                  <option value="Usmishka Caravan #5 donation USD 70" price="70">Пожертва 70 USD</option>
+                  <option value="Usmishka Caravan #5 donation USD 200" price="200">Пожертва 200 USD</option>
+                  <option value="Usmishka Caravan #5 donation USD 350" price="350">Пожертва 350 USD</option>
                 </select>
                 <select style="visibility: hidden" id="quantitySelect"></select>
               </div>
@@ -405,7 +405,7 @@
   </div>
 </footer>
 
-<script src="https://www.paypal.com/sdk/js?client-id=ATLfN1TldbEatU_Dcm35B1-O425JXRexVEn_VRkvIAx8WNBUX6qm93CmUYagdN5wLH_uWe-F2HVO0lgB&enable-funding=venmo&currency=JPY" data-sdk-integration-source="button-factory" defer></script>
+<script src="https://www.paypal.com/sdk/js?client-id=ATLfN1TldbEatU_Dcm35B1-O425JXRexVEn_VRkvIAx8WNBUX6qm93CmUYagdN5wLH_uWe-F2HVO0lgB&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory" defer></script>
 <script>
 // PayPal donation button (copied from usmishka.jp/caravan)
 function initPayPalButton() {
@@ -415,7 +415,7 @@ function initPayPalButton() {
   if (!isNaN(quantity)) {
     quantitySelect.style.visibility = "visible";
   }
-  var orderDescription = 'Pika中條のウスミシュカ・キャラバン(第5弾)（寄付金）';
+  var orderDescription = 'Usmishka Caravan #5 (donation)';
   if (orderDescription === '') {
     orderDescription = 'Item';
   }
@@ -436,22 +436,22 @@ function initPayPalButton() {
         quantity = 1;
       }
       var priceTotal = quantity * selectedItemPrice + quantity * tax;
-      priceTotal = Math.round(priceTotal * 100) / 100;
-      var itemTotalValue = Math.round((selectedItemPrice * quantity) * 100) / 100;
-      var taxTotalValue = Math.round((tax * quantity) * 100) / 100;
+      priceTotal = (Math.round(priceTotal * 100) / 100).toFixed(2);
+      var itemTotalValue = (Math.round((selectedItemPrice * quantity) * 100) / 100).toFixed(2);
+      var taxTotalValue = (Math.round((tax * quantity) * 100) / 100).toFixed(2);
       return actions.order.create({
         purchase_units: [{
           description: orderDescription,
           amount: {
-            currency_code: 'JPY',
+            currency_code: 'USD',
             value: priceTotal,
             breakdown: {
               item_total: {
-                currency_code: 'JPY',
+                currency_code: 'USD',
                 value: itemTotalValue,
               },
               tax_total: {
-                currency_code: 'JPY',
+                currency_code: 'USD',
                 value: taxTotalValue,
               }
             }
@@ -459,13 +459,13 @@ function initPayPalButton() {
           items: [{
             name: selectedItemDescription,
             unit_amount: {
-              currency_code: 'JPY',
-              value: selectedItemPrice,
+              currency_code: 'USD',
+              value: selectedItemPrice.toFixed(2),
             },
             quantity: quantity,
             tax: {
-              currency_code: 'JPY',
-              value: tax,
+              currency_code: 'USD',
+              value: tax.toFixed(2),
             }
           }]
         }]
