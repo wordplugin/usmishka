@@ -15,23 +15,26 @@ section{padding:72px 0}
 
 /* header */
 header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,252,248,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.nav{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1200px;margin:0 auto;padding:0 20px}
-.brand{display:flex;align-items:center;gap:10px;font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:1.15rem;color:var(--ink)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:nowrap;height:64px;max-width:1240px;margin:0 auto;padding:0 20px}
+.brand{display:flex;align-items:center;gap:10px;min-width:0;font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:1.15rem;color:var(--ink)}
 .brand img{height:28px;width:auto;flex:none}
-.brand small{display:block;font-size:.6rem;font-weight:500;color:var(--muted);letter-spacing:.05em}
-@media(max-width:560px){.brand img{height:23px}.brand small{display:none}}
-nav ul{display:flex;gap:4px;list-style:none;align-items:center}
-nav a{padding:8px 12px;border-radius:8px;font-size:.9rem;font-weight:500;color:var(--ink)}
+.brand small{display:block;font-size:.6rem;font-weight:500;color:var(--muted);letter-spacing:.05em;white-space:nowrap}
+nav{flex:none}
+nav ul{display:flex;gap:2px;list-style:none;align-items:center;flex-wrap:nowrap}
+nav a{padding:8px 10px;border-radius:8px;font-size:.85rem;font-weight:500;color:var(--ink);white-space:nowrap}
 nav a:hover{background:var(--yellow-soft)}
-nav a.donate{background:var(--yellow);font-weight:700;border-radius:999px;padding:8px 18px}
+nav a.donate{background:var(--yellow);font-weight:700;border-radius:999px;padding:8px 16px}
 nav a.donate:hover{background:#ffdf40}
 #menu-btn{display:none;background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--ink)}
-@media(max-width:900px){
+@media(max-width:1260px){.brand small{display:none}}
+@media(max-width:1080px){
   #menu-btn{display:block}
   nav ul{display:none;position:absolute;top:64px;left:0;right:0;background:#fff;flex-direction:column;gap:0;padding:10px 20px 20px;border-bottom:1px solid var(--line)}
   nav ul.open{display:flex}
-  nav ul a{display:block;padding:12px}
+  nav ul a{display:block;padding:12px;font-size:.95rem}
+  .brand small{display:block}
 }
+@media(max-width:560px){.brand img{height:23px}.brand small{display:none}}
 
 /* hero */
 .hero{padding:130px 0 70px;background:
