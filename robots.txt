@@ -1,0 +1,31 @@
+Sitemap: https://usmishka.jp/sitemap.xml
+
+User-agent: *
+Disallow: /wp-admin/
+Disallow: /wp-content/
+Disallow: /wp-includes/
+Disallow: /wp-json/
+Disallow: /*/en.html$
+Disallow: /*/uk.html$
+Disallow: /*/index.html$
+Disallow: /*/kodomo.html$
+Disallow: /*/minsei.html$
+Disallow: /*/bunka.html$
+Disallow: /*/matching.html$
+Disallow: /*/wanpak.html$
+Disallow: /*/kifukinkitei.html$
+
+User-agent: SemrushBot
+Crawl-delay: 30
+
+User-agent: AhrefsBot
+Crawl-delay: 30
+
+User-agent: DataForSeoBot
+Crawl-delay: 30
+
+User-agent: PetalBot
+Crawl-delay: 30
+
+User-agent: MJ12bot
+Crawl-delay: 30
