@@ -1,10 +1,6 @@
 Sitemap: https://usmishka.jp/sitemap.xml
 
 User-agent: *
-Disallow: /wp-admin/
-Disallow: /wp-content/
-Disallow: /wp-includes/
-Disallow: /wp-json/
 Disallow: /*/en.html$
 Disallow: /*/uk.html$
 Disallow: /*/index.html$
