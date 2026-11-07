@@ -135,7 +135,6 @@ nav a.donate:hover{background:#ffdf40}
 .don-box li{padding:7px 0 7px 26px;position:relative;border-bottom:1px dashed rgba(255,255,255,.15)}
 .don-box li::before{content:"✿";position:absolute;left:2px;color:var(--yellow)}
 .don-cta{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap}
-.don-cta .btn-primary{box-shadow:none}
 .don-cta .btn-white{border:2px solid #fff;color:#fff}
 .don-cta .btn-white:hover{background:#fff;color:var(--blue)}
 .don-small{font-size:.8rem;opacity:.85;margin-top:16px}
@@ -167,9 +166,6 @@ th,td{padding:11px 14px;border-bottom:1px solid var(--line);text-align:left;vert
 th{background:var(--blue);color:#fff;font-weight:700;white-space:nowrap}
 tr:last-child td{border-bottom:none}
 .about-grid .greeting{font-size:.92rem;color:var(--muted);margin-bottom:20px}
-.reports{margin-top:14px;font-size:.9rem}
-.reports a{display:inline-block;margin:4px 8px 4px 0;padding:6px 14px;background:#fff;border:1px solid var(--line);border-radius:999px}
-.reports a:hover{border-color:var(--blue)}
 @media(max-width:800px){.about-grid{grid-template-columns:1fr}}
 
 /* reports */

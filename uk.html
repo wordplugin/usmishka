@@ -424,15 +424,7 @@
 // PayPal donation button (copied from usmishka.jp/caravan)
 function initPayPalButton() {
   var itemOptions = document.querySelector("#smart-button-container #item-options");
-  var quantity = parseInt();
-  var quantitySelect = document.querySelector("#smart-button-container #quantitySelect");
-  if (!isNaN(quantity)) {
-    quantitySelect.style.visibility = "visible";
-  }
   var orderDescription = 'Usmishka Caravan #5 (donation)';
-  if (orderDescription === '') {
-    orderDescription = 'Item';
-  }
   paypal.Buttons({
     style: {
       shape: 'pill',
@@ -443,12 +435,8 @@ function initPayPalButton() {
     createOrder: function(data, actions) {
       var selectedItemDescription = itemOptions.options[itemOptions.selectedIndex].value;
       var selectedItemPrice = parseFloat(itemOptions.options[itemOptions.selectedIndex].getAttribute("price"));
-      var tax = (0 === 0 || false) ? 0 : (selectedItemPrice * (parseFloat(0) / 100));
-      if (quantitySelect.options.length > 0) {
-        quantity = parseInt(quantitySelect.options[quantitySelect.selectedIndex].value);
-      } else {
-        quantity = 1;
-      }
+      var tax = 0;
+      var quantity = 1;
       var priceTotal = quantity * selectedItemPrice + quantity * tax;
       priceTotal = (Math.round(priceTotal * 100) / 100).toFixed(2);
       var itemTotalValue = (Math.round((selectedItemPrice * quantity) * 100) / 100).toFixed(2);
