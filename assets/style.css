@@ -198,9 +198,14 @@ footer a{color:var(--yellow)}
 @media(max-width:700px){footer .wrap{grid-template-columns:1fr}}
 
 /* paypal embed */
-.paypal-card{background:#fff;border-radius:16px;padding:24px 22px 14px;margin-top:22px;max-width:420px}
+.paypal-card{background:#fff;border-radius:16px;padding:24px 22px 14px;margin-top:22px;max-width:420px;color:var(--ink)}
 .paypal-card h4{color:var(--ink);font-family:'Zen Maru Gothic',sans-serif;font-size:1rem;margin-bottom:12px;text-align:center}
 .paypal-card select#item-options{width:100%;padding:11px 12px;border:2px solid var(--line);border-radius:10px;font-size:.95rem;font-family:inherit;margin-bottom:14px;background:#fff;color:var(--ink)}
+.pay-msg{border-radius:12px;padding:16px 18px;margin:0 0 14px;text-align:left;font-size:.95rem;line-height:1.7}
+.pay-msg strong{display:block;font-family:'Zen Maru Gothic',sans-serif;font-size:1.15rem;margin-bottom:6px}
+.pay-ok{background:#e8f7ee;border:2px solid #2e9e5b;color:#14532d}
+.pay-ok strong::before{content:"✓ "}
+.pay-err{background:#fdecea;border:2px solid #d64545;color:#7a1d1d}
 
 /* category subpages */
 .page-hero{padding:120px 0 46px;background:radial-gradient(600px 300px at 90% 0%,rgba(255,213,0,.22),transparent),radial-gradient(600px 300px at 0% 100%,rgba(0,87,183,.1),transparent),var(--bg)}

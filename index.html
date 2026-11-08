@@ -559,6 +559,45 @@ addEventListener('load',function(){setTimeout(go,2500)});
 
 <script>
 // PayPal donation button (copied from usmishka.jp/caravan)
+// 決済結果(完了・失敗・キャンセル)を寄付者に分かりやすく表示する
+var PAY_MSG = { doneTitle: 'お支払いが完了しました', doneText: 'ご支援ありがとうございました。支援金（寄付金）の使途報告については本WEBサイト上で行います。', error: 'お支払いを完了できませんでした。お手数ですが、時間をおいてもう一度お試しください。', cancel: 'お支払いはキャンセルされました。寄付をご希望の場合は、もう一度お試しください。' };
+function payMessageBox() {
+  var box = document.getElementById('paypal-message');
+  if (!box) {
+    box = document.createElement('div');
+    box.id = 'paypal-message';
+    box.setAttribute('role', 'status');
+    box.setAttribute('aria-live', 'polite');
+    var holder = document.getElementById('paypal-button-container');
+    holder.parentNode.insertBefore(box, holder);
+  }
+  return box;
+}
+function clearPayMessage() {
+  var box = document.getElementById('paypal-message');
+  if (box) { box.className = ''; box.textContent = ''; }
+}
+function showPayError(text) {
+  var box = payMessageBox();
+  box.className = 'pay-msg pay-err';
+  box.textContent = text;
+  box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+function showPayDone() {
+  var options = document.getElementById('item-options-wrapper');
+  if (options) { options.style.display = 'none'; }
+  document.getElementById('paypal-button-container').innerHTML = '';
+  var box = payMessageBox();
+  box.className = 'pay-msg pay-ok';
+  box.textContent = '';
+  var title = document.createElement('strong');
+  title.textContent = PAY_MSG.doneTitle;
+  var body = document.createElement('span');
+  body.textContent = PAY_MSG.doneText;
+  box.appendChild(title);
+  box.appendChild(body);
+  box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
 function initPayPalButton() {
   var itemOptions = document.querySelector("#smart-button-container #item-options");
   var orderDescription = 'Pika中條のウスミシュカ・キャラバン(第5弾)（寄付金）';
@@ -570,6 +609,7 @@ function initPayPalButton() {
       label: 'pay',
     },
     createOrder: function(data, actions) {
+      clearPayMessage();
       var selectedItemDescription = itemOptions.options[itemOptions.selectedIndex].value;
       var selectedItemPrice = parseFloat(itemOptions.options[itemOptions.selectedIndex].getAttribute("price"));
       var tax = 0;
@@ -613,13 +653,15 @@ function initPayPalButton() {
     onApprove: function(data, actions) {
       return actions.order.capture().then(function(orderData) {
         console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-        const element = document.getElementById('paypal-button-container');
-        element.innerHTML = '';
-        element.innerHTML = '<h3>ご支援ありがとうございました。支援金（寄付金）の使途報告については本WEBサイト上で行います。</h3>';
+        showPayDone();
       });
+    },
+    onCancel: function() {
+      showPayError(PAY_MSG.cancel);
     },
     onError: function(err) {
       console.log(err);
+      showPayError(PAY_MSG.error);
     }
   }).render('#paypal-button-container');
 }
