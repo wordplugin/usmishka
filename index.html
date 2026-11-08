@@ -16,7 +16,16 @@
 <meta name="description" content="一般社団法人ウスミシュカは、ウクライナで子供と女性たちを支援し、日本とウクライナの交流を推進します。支援キャラバンは100回を超えました。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Maru+Gothic:wght@700;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<script>
+// Webフォントは初回描画の後に読み込む(描画をブロックせず、初期表示を速くするため)
+(function(){
+var F='https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Maru+Gothic:wght@700;900&display=swap',done=0;
+function go(){if(done)return;done=1;var l=document.createElement('link');l.rel='stylesheet';l.href=F;l.media='print';l.onload=function(){l.media='all'};document.head.appendChild(l)}
+var ok=0;try{new PerformanceObserver(function(list,o){if(list.getEntriesByName('first-contentful-paint').length){o.disconnect();setTimeout(go,0)}}).observe({type:'paint',buffered:true});ok=1}catch(e){}
+if(!ok){addEventListener('load',go)}
+addEventListener('load',function(){setTimeout(go,2500)});
+})();
+</script>
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Maru+Gothic:wght@700;900&display=swap"></noscript>
 <link rel="canonical" href="https://usmishka.jp/">
 <link rel="alternate" hreflang="ja" href="https://usmishka.jp/">
@@ -548,7 +557,6 @@
   </div>
 </footer>
 
-<script src="https://www.paypal.com/sdk/js?client-id=ATLfN1TldbEatU_Dcm35B1-O425JXRexVEn_VRkvIAx8WNBUX6qm93CmUYagdN5wLH_uWe-F2HVO0lgB&enable-funding=venmo&currency=JPY&locale=ja_JP" data-sdk-integration-source="button-factory" defer></script>
 <script>
 // PayPal donation button (copied from usmishka.jp/caravan)
 function initPayPalButton() {
@@ -615,9 +623,27 @@ function initPayPalButton() {
     }
   }).render('#paypal-button-container');
 }
-window.addEventListener('load', function() {
-  if (window.paypal) { initPayPalButton(); }
-});
+// PayPal SDK は寄付欄の手前までスクロールされてから読み込む(初期表示を軽くするため)
+function loadPayPalSdk() {
+  if (loadPayPalSdk.started) { return; }
+  loadPayPalSdk.started = true;
+  var s = document.createElement('script');
+  s.src = 'https://www.paypal.com/sdk/js?client-id=ATLfN1TldbEatU_Dcm35B1-O425JXRexVEn_VRkvIAx8WNBUX6qm93CmUYagdN5wLH_uWe-F2HVO0lgB&enable-funding=venmo&currency=JPY&locale=ja_JP';
+  s.setAttribute('data-sdk-integration-source', 'button-factory');
+  s.onload = function() { if (window.paypal) { initPayPalButton(); } };
+  document.head.appendChild(s);
+}
+(function() {
+  var box = document.getElementById('smart-button-container');
+  if (box && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries) {
+      if (entries.some(function(e) { return e.isIntersecting; })) { io.disconnect(); loadPayPalSdk(); }
+    }, { rootMargin: '800px 0px' });
+    io.observe(box);
+  } else {
+    window.addEventListener('load', loadPayPalSdk);
+  }
+})();
 </script>
 <script>
 // mobile menu

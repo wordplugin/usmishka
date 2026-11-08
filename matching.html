@@ -16,7 +16,16 @@
 <meta name="description" content="日本とウクライナの人と人の結びつきを強め、復興に貢献する活動の記録。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Maru+Gothic:wght@700;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<script>
+// Webフォントは初回描画の後に読み込む(描画をブロックせず、初期表示を速くするため)
+(function(){
+var F='https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Maru+Gothic:wght@700;900&display=swap',done=0;
+function go(){if(done)return;done=1;var l=document.createElement('link');l.rel='stylesheet';l.href=F;l.media='print';l.onload=function(){l.media='all'};document.head.appendChild(l)}
+var ok=0;try{new PerformanceObserver(function(list,o){if(list.getEntriesByName('first-contentful-paint').length){o.disconnect();setTimeout(go,0)}}).observe({type:'paint',buffered:true});ok=1}catch(e){}
+if(!ok){addEventListener('load',go)}
+addEventListener('load',function(){setTimeout(go,2500)});
+})();
+</script>
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Maru+Gothic:wght@700;900&display=swap"></noscript>
 <link rel="canonical" href="https://usmishka.jp/matching.html">
 <link rel="icon" href="/assets/logo.png">
